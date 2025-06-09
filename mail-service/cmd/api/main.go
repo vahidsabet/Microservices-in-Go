@@ -6,8 +6,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
-
-	clientv3 "go.etcd.io/etcd/client/v3"
+	// clientv3 "go.etcd.io/etcd/client/v3"
 )
 
 const webPort = "80"
@@ -15,7 +14,7 @@ const webPort = "80"
 // Config is the application Config, shared with functions by using it as a receiver
 type Config struct {
 	Mailer Mail
-	Etcd   *clientv3.Client
+	// Etcd   *clientv3.Client
 }
 
 func main() {
@@ -33,8 +32,8 @@ func main() {
 	}
 
 	// connect to etcd and register service
-	app.registerService()
-	defer app.Etcd.Close()
+	// app.registerService()
+	// defer app.Etcd.Close()
 
 	err := srv.ListenAndServe()
 	if err != nil {

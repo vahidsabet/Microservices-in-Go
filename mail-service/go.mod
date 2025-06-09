@@ -13,6 +13,7 @@ require (
 	github.com/toorop/go-dkim v0.0.0-20201103131630-e1cd1a0a5208 // indirect
 	github.com/vanng822/css v1.0.1 // indirect
 	github.com/vanng822/go-premailer v1.24.0 // indirect
+	github.com/xhit/go-simple-mail v2.2.2+incompatible // indirect
 	github.com/xhit/go-simple-mail/v2 v2.16.0 // indirect
 	golang.org/x/net v0.37.0 // indirect
 )

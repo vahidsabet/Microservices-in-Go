@@ -6,7 +6,6 @@ import (
 	"time"
 
 	"github.com/vanng822/go-premailer/premailer"
-	mail "github.com/xhit/go-simple-mail"
 	mail "github.com/xhit/go-simple-mail/v2"
 )
 
@@ -48,7 +47,7 @@ func (m *Mail) SendSMTPMessage(msg Message) error {
 
 	formattedMessage, err := m.buildHTMLMessage(msg)
 	if err != nil {
-		return "", err
+		return err
 	}
 
 	plainMessage, err := m.buildPlainTextMessage(msg)
