@@ -175,7 +175,7 @@ func (app *Config) sendMail(w http.ResponseWriter, msg MailPayload) {
 
 	if response.StatusCode != http.StatusAccepted {
 
-		app.errorJSON(w, err.New("error calling mail service"))
+		app.errorJSON(w, errors.New("error calling mail service"))
 		return
 
 	}
