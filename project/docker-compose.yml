@@ -87,3 +87,13 @@ services:
     ports:
       - "1025:1025"
       - "8025:8025"
+
+  rabbitmq:
+    image: 'rabbitmq:alpine'
+    ports:
+      - "5672:5672"
+    deploy:
+      mod: replicated
+      replicas: 1
+    volume:
+      - ./db-data/rabbitmq/:/var/lib/rabbitmq
