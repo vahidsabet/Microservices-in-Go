@@ -4,13 +4,15 @@ import (
 	"encoding/json"
 	"errors"
 	"io"
+	"log-service/data"
 	"net/http"
+	"time"
 )
 
 type jsonResponse struct {
-	Error bool `json:"error"`
+	Error   bool   `json:"error"`
 	Message string `json:"message"`
-	Data any `json:"data,omitempty"`
+	Data    any    `json:"data,omitempty"`
 }
 
 // readJSON tries to read the body of a request and converts it into JSON
@@ -70,4 +72,14 @@ func (app *Config) errorJSON(w http.ResponseWriter, err error, status ...int) er
 	payload.Message = err.Error()
 
 	return app.writeJSON(w, statusCode, payload)
+}
+
+// logEvent saves an event to the logs collection in Mongo
+func (app *Config) logEvent(name, content string) error {
+	event := data.LogEntry{
+		Name:      name,
+		Data:      content,
+		CreatedAt: time.Now(),
+	}
+	return app.Models.LogEntry.Insert(event)
 }
