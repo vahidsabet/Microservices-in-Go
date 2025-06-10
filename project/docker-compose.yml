@@ -80,15 +80,16 @@ services:
       retries: 5
 
   mongo:
-    image: 'mongo:4.2.16-bionic'
+    image: 'mongo:noble'
     ports:
-      - "27019:27017"
+      - "27017:27017"
     environment:
       MONGO_INITDB_DATABASE: logs
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
       - ./db-data/mongo/:/data/db
+
 
   mailjog:
     image: 'mailhog/mailhog:latest'
@@ -101,7 +102,7 @@ services:
     ports:
       - "5672:5672"
     deploy:
-      mod: replicated
+      mode: replicated
       replicas: 1
-    volume:
+    volumes:
       - ./db-data/rabbitmq/:/var/lib/rabbitmq

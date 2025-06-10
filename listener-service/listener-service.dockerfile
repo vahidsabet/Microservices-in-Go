@@ -1,6 +1,6 @@
 # base go image
 
-FROM golang:1.23-alpine as builder
+FROM golang:1.21-alpine as builder
 
 RUN mkdir /app
 
@@ -8,7 +8,7 @@ COPY . /app
 
 WORKDIR /app
 
-RUN CGO_ENABLED=0 go build -o listenerApp ./cmd/api
+RUN CGO_ENABLED=0 go build -o listenerApp .
 
 RUN chmod +x /app/listenerApp
 

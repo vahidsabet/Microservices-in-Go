@@ -92,7 +92,7 @@ func (consumer *Consumer) Listen(topics []string) error {
 	return nil
 }
 
-func handlePayload(payload *Payload) {
+func handlePayload(payload Payload) {
 	switch payload.Name {
 	case "log", "event":
 		// log whatever we get
